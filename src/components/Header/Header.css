@@ -1,0 +1,45 @@
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px;
+    text-decoration: none;
+}
+
+.signup {
+    background-color: #c300ff;
+    color: #fff;
+    border: 1px solid #e6e6e6;
+}
+
+.login {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #e6e6e6;
+}
