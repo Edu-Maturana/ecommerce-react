@@ -6,10 +6,16 @@ import "./Header.css";
 export default function Header() {
   return (
     <div className="Header">
-      <Link className="logo" to="/">LaptopShop</Link>
+      <Link className="logo" to="/">
+        LaptopShop
+      </Link>
       <div className="right">
-        <Link to='/signup' className="Button signup">Sign Up</Link>
-        <Link to='login' className="Button login">Login</Link>
+        <Link to="/signup" className="Button signup">
+          Sign Up
+        </Link>
+        <Link to="login" className="Button login">
+          Login
+        </Link>
       </div>
     </div>
   );

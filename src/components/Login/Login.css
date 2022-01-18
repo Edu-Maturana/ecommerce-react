@@ -1,0 +1,46 @@
+.login-form {
+    width: 100%;
+    max-width: 500px;
+    padding: 3rem;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-form * {
+    width: 300px;
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+.Label {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.Input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    margin-bottom: 1rem;
+}
+
+.Submit {
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
