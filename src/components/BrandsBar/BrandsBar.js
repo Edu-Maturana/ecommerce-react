@@ -23,7 +23,7 @@ export default function BrandsBar() {
             ) : (
                 brands.map((brand) => {
                     return (
-                            <Link to={`/products?brand=${brand.name}`} className="brand-link">{brand.name}</Link>
+                            <Link to={`/${brand.name}`} key={brand.name} className="brand-link">{brand.name}</Link>
                     );
                 }
                 )

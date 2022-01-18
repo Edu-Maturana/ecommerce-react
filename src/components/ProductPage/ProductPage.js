@@ -6,7 +6,7 @@ import "./ProductPage.css";
 import { getProduct } from "../../api/products";
 
 export default function ProductPage() {
-  // take id from current url
+  
   const id = window.location.pathname.split("/")[2];
 
   const [product, setProduct] = useState({});
@@ -54,7 +54,6 @@ export default function ProductPage() {
               height={500}
               url={product.video}
               controls
-              playing
             />
           </div>
         </>

@@ -1,19 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, memo } from "react";
+import { Link, useLocation } from "react-router-dom";
+
 import { getProducts } from "../../api/products";
 
 import "./Products.css";
 
-export default function Products() {
+function Products(props) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { pathname } = useLocation();
+
+  let brand = "";
+  if (props.brand) {
+    brand = pathname.split("/")[1];
+  }
 
   useEffect(() => {
-    getProducts().then((res) => {
+    getProducts(props.limit, brand).then((res) => {
       setProducts(res.data.products);
       setLoading(false);
     });
-  }, []);
+  }, [props.limit, brand]);
+
   return (
     <div className="products">
       {loading ? (
@@ -35,3 +43,5 @@ export default function Products() {
     </div>
   );
 }
+
+export default memo(Products);
