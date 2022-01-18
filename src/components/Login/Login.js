@@ -24,7 +24,7 @@ export default function Login() {
             .then((res) => {
               console.log(res);
               setLoading(true);
-              //window.location.href = "/";
+              window.location.href = "/";
               login(res.token);
             })
             .catch((err) => {

@@ -4,6 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import * as Yup from "yup";
 
 import { SignUp, LogIn } from "../../api/auth";
+import useAuth from "../../hooks/useAuth";
 
 import "../Login/Login.css";
 
@@ -11,6 +12,7 @@ import { Link } from "react-router-dom";
 
 export default function Signup() {
   const [loading, setLoading] = useState(false);
+  const { login } = useAuth();
   return (
     <div className="Login">
       <ToastContainer />
@@ -36,8 +38,13 @@ export default function Signup() {
               LogIn({
                 email: values.email,
                 password: values.password,
+              }).then((res) => {
+                login(res.token);
               });
-              window.location.href = "/";
+
+              setTimeout(() => {
+                window.location.href = "/";
+              }, 1000);
             })
             .catch((err) => {
               console.log(err);

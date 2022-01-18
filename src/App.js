@@ -5,7 +5,7 @@ import jwtDecode from "jwt-decode";
 import "./App.css";
 
 import AuthContext from "./context/AuthContext";
-import {setToken, getToken} from "./api/token"
+import {setToken, getToken, removeToken} from "./api/token"
 
 import Header from "./components/Header/Header";
 import BrandsBar from "./components/BrandsBar/BrandsBar";
@@ -40,11 +40,19 @@ function App() {
     })
   };
 
+  const logout = () => {
+    if(auth) {
+      removeToken();
+      setAuth(null);
+      window.location.href = "/";
+    }
+  };
+
   const data = useMemo(() => (
     {
       auth,
       login,
-      logout: () => null,
+      logout,
       setReloadUser,
     }
   ), [auth]);
