@@ -35,8 +35,7 @@ export default function ProductPage() {
             </div>
             <div className="data-section">
               <p className="route">
-                <Link to="/">Home / </Link>
-                <Link to="/products">Products / </Link>
+                <Link to="/">Products / </Link>
                 {product.name}
               </p>
               <h4 className="product-name">{product.name}</h4>

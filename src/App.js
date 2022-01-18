@@ -70,7 +70,6 @@ function App() {
           <Routes>
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
-            <Route path="/products" element={<Products limit={20} />} />
             <Route path="/:brand" element={<Products brand={true} />} />
             <Route path="/products/:id" element={<ProductPage />} />
             <Route path="/" element={<HomeBody />} />
