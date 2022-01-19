@@ -36,7 +36,6 @@ function Products(props) {
             <img src={product.image} alt={product.name} />
             <h4 className="name">{product.name}</h4>
             <p className="price">${product.price} USD</p>
-            <button className="add-to-cart">Add to cart</button>
           </Link>
         ))
       )}

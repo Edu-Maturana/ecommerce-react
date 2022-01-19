@@ -1,11 +1,19 @@
-import React, {useMemo, useEffect,useState} from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import jwtDecode from "jwt-decode";
+import { toast, ToastContainer } from "react-toastify";
 
 import "./App.css";
 
 import AuthContext from "./context/AuthContext";
-import {setToken, getToken, removeToken} from "./api/token"
+import CartContext from "./context/CartContext";
+import { setToken, getToken, removeToken } from "./api/token";
+import {
+  getProductsCart,
+  addProductToCart,
+  countProductsCart,
+  clearCart,
+} from "./api/cart";
 
 import Header from "./components/Header/Header";
 import BrandsBar from "./components/BrandsBar/BrandsBar";
@@ -17,8 +25,10 @@ import Signup from "./components/Signup/Signup";
 import MyProfile from "./components/MyProfile/MyProfile";
 
 function App() {
-  const [auth, setAuth] = useState(undefined)
-  const [reloadUser, setReloadUser] = useState(false)
+  const [auth, setAuth] = useState(undefined);
+  const [totalProducts, setTotalProducts] = useState(0);
+  const [reloadUser, setReloadUser] = useState(false);
+  const [reloadCart, setReloadCart] = useState(false);
 
   useEffect(() => {
     const token = getToken();
@@ -26,37 +36,65 @@ function App() {
       setAuth({
         token,
         user: jwtDecode(token),
-      })
+      });
     } else {
-      setAuth(null)
+      setAuth(null);
     }
-    setReloadUser(false)
-  }, [reloadUser])
+    setReloadUser(false);
+  }, [reloadUser]);
 
-  const login  = (token) => {
+  useEffect(() => {
+    setTotalProducts(countProductsCart());
+    setReloadCart(false);
+  }, [reloadCart, auth]);
+
+  const login = (token) => {
     setToken(token);
     setAuth({
       token,
-      user : jwtDecode(token).id 
-    })
+      user: jwtDecode(token).id,
+    });
   };
 
   const logout = () => {
-    if(auth) {
+    if (auth) {
       removeToken();
+      clearCart();
       setAuth(null);
       window.location.href = "/";
     }
   };
 
-  const data = useMemo(() => (
-    {
+  const data = useMemo(
+    () => ({
       auth,
       login,
       logout,
       setReloadUser,
+    }),
+    [auth]
+  );
+
+  const addProductCart = (product) => {
+    const token = getToken();
+    if (token) {
+      addProductToCart(product);
+      setReloadCart(true);
+    } else {
+      toast.warning("You must be logged in to buy products");
     }
-  ), [auth]);
+  };
+
+  const cartData = useMemo(
+    () => ({
+      products: totalProducts,
+      addProduct: (product) => addProductCart(product),
+      getProducts: getProductsCart,
+      removeProduct: () => null,
+      clearCart: () => null,
+    }),
+    [auth, totalProducts]
+  );
 
   if (auth === undefined) {
     return null;
@@ -64,20 +102,23 @@ function App() {
 
   return (
     <AuthContext.Provider value={data}>
-      <div className="App">
-        <Header />
-        <BrandsBar />
-        <div className="container">
-          <Routes>
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="/:brand" element={<Products brand={true} />} />
-            <Route path="/products/:id" element={<ProductPage />} />
-            <Route path="/myprofile" element={<MyProfile />} />
-            <Route path="/" element={<HomeBody />} />
-          </Routes>
+      <CartContext.Provider value={cartData}>
+        <div className="App">
+          <ToastContainer />
+          <Header />
+          <BrandsBar />
+          <div className="container">
+            <Routes>
+              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<Signup />} />
+              <Route path="/:brand" element={<Products brand={true} />} />
+              <Route path="/products/:id" element={<ProductPage />} />
+              <Route path="/myprofile" element={<MyProfile />} />
+              <Route path="/" element={<HomeBody />} />
+            </Routes>
+          </div>
         </div>
-      </div>
+      </CartContext.Provider>
     </AuthContext.Provider>
   );
 }

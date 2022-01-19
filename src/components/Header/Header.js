@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./Header.css";
+import CartIcon from "../CartIcon/CartIcon";
 import useAuth from "../../hooks/useAuth";
 import { getUserData } from "../../api/user";
 
@@ -23,8 +24,10 @@ export default function Header() {
         LaptopShop
       </Link>
       <div className="right">
-        {user ? (
+      <CartIcon />
+        {auth ? (
           <div className="user">
+            
             <Link to="/myprofile" className="Button profile">
               <img
                 className="user-icon"

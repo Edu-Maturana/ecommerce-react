@@ -4,6 +4,7 @@ import ReactPlayer from "react-player/youtube";
 
 import "./ProductPage.css";
 import { getProduct } from "../../api/products";
+import useCart from "../../hooks/useCart";
 
 export default function ProductPage() {
   
@@ -11,6 +12,7 @@ export default function ProductPage() {
 
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
+  const { addProduct } = useCart();
 
   useEffect(() => {
     getProduct(id).then((res) => {
@@ -42,7 +44,7 @@ export default function ProductPage() {
               <h6 className="product-brand">{product.brand} </h6>
               <p className="product-description">{product.description} </p>
               <p className="product-price">${product.price} USD</p>
-              <button className="buy">Buy</button>
+              <button className="buy" onClick={() => addProduct(product.id)}>Add to cart</button>
             </div>
           </div>
           <div>

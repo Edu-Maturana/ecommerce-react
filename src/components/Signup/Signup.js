@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import * as Yup from "yup";
 
 import { SignUp, LogIn } from "../../api/auth";
@@ -15,7 +15,6 @@ export default function Signup() {
   const { login } = useAuth();
   return (
     <div className="Login">
-      <ToastContainer />
       <Formik
         initialValues={{ name: "", email: "", password: "" }}
         validationSchema={Yup.object({
