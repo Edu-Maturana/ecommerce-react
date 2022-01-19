@@ -14,6 +14,7 @@ import ProductPage from "./components/ProductPage/ProductPage";
 import Products from "./components/Products/Products";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
+import MyProfile from "./components/MyProfile/MyProfile";
 
 function App() {
   const [auth, setAuth] = useState(undefined)
@@ -72,6 +73,7 @@ function App() {
             <Route path="signup" element={<Signup />} />
             <Route path="/:brand" element={<Products brand={true} />} />
             <Route path="/products/:id" element={<ProductPage />} />
+            <Route path="/myprofile" element={<MyProfile />} />
             <Route path="/" element={<HomeBody />} />
           </Routes>
         </div>
