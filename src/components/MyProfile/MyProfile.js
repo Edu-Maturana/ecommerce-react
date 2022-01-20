@@ -4,6 +4,7 @@ import "./MyProfile.css";
 
 import useAuth from "../../hooks/useAuth";
 import { getUserData } from "../../api/user";
+import AddressShipping from "../AddressShipping/AddressShipping";
 
 export default function MyProfile() {
   const [user, setUser] = useState(null);
@@ -26,6 +27,7 @@ export default function MyProfile() {
         <div className="user-data">
           <h2 className="user-name">{user.name}</h2>
           <p className="user-email">{user.email}</p>
+          <AddressShipping />
         </div>
       ) : (
         <h2>...</h2>
