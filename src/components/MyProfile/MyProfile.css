@@ -3,15 +3,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: left;
+    justify-content: center;
     margin-top: 20px;
 }
 
 .user-info {
-    width: 100%;
+    width: max-content;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: left;
 }
 

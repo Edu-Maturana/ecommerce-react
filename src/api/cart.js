@@ -40,3 +40,13 @@ export function countProductsCart() {
 export function clearCart() {
   localStorage.removeItem("cart");
 }
+
+export function removeProductFromCart(product) {
+  const cart = getProductsCart();
+  const newCart = cart.filter((item) => item !== product);
+  localStorage.setItem("cart", newCart);
+
+  if (newCart.length === 0) {
+    localStorage.removeItem("cart");
+  }
+}

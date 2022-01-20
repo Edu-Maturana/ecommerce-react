@@ -24,20 +24,22 @@ export default function Header() {
         LaptopShop
       </Link>
       <div className="right">
-      <CartIcon />
+        <CartIcon />
         {auth ? (
           <div className="user">
-            
             <Link to="/myprofile" className="Button profile">
               <img
                 className="user-icon"
                 src="https://cupeybowling.com/wp-content/uploads/2021/05/940-9406687_already-a-proact-user-employee-icon-white-png.png"
                 alt="account"
               />
-              <span>My account</span>
             </Link>
             <Link to="/" onClick={logout} className="Button login">
-              Logout
+              <img
+                className="logout-icon"
+                src="http://icons.iconarchive.com/icons/icons8/windows-8/512/User-Interface-Logout-icon.png"
+                alt="logout"
+              />
             </Link>
           </div>
         ) : (

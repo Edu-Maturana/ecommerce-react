@@ -44,6 +44,10 @@
     border: 1px solid #e6e6e6;
 }
 
+.login:hover {
+    background-color: #eb7373;
+}
+
 .user {
     display: flex;
     align-items: center;
@@ -58,5 +62,9 @@
 .user-icon{
     width: 20px;
     height: 20px;
-    margin-right: 10px;
+}
+
+.logout-icon {
+    width: 20px;
+    height: 20px;
 }

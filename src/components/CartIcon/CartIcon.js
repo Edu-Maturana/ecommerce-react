@@ -2,12 +2,13 @@ import React from "react";
 
 import "./CartIcon.css";
 import useCart from "../../hooks/useCart";
+import { Link } from "react-router-dom";
 
 export default function CartIcon() {
   const {products} = useCart();
 
   return (
-    <div className="cart">
+    <Link to="/cart" className="cart">
       
       {
         products > 0 ? (
@@ -20,6 +21,6 @@ export default function CartIcon() {
         src="https://img.icons8.com/ios/50/000000/shopping-cart.png"
         alt="cart"
       />
-    </div>
+    </Link>
   );
 }

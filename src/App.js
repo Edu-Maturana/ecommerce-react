@@ -13,6 +13,7 @@ import {
   addProductToCart,
   countProductsCart,
   clearCart,
+  removeProductFromCart,
 } from "./api/cart";
 
 import Header from "./components/Header/Header";
@@ -23,6 +24,7 @@ import Products from "./components/Products/Products";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import MyProfile from "./components/MyProfile/MyProfile";
+import CartPage from "./components/CartPage/CartPage";
 
 function App() {
   const [auth, setAuth] = useState(undefined);
@@ -85,13 +87,22 @@ function App() {
     }
   };
 
+  const removeProductCart = (product) => {
+    const token = getToken();
+    if (token) {
+      removeProductFromCart(product);
+      setReloadCart(true);
+    } 
+  };
+
+
   const cartData = useMemo(
     () => ({
       products: totalProducts,
       addProduct: (product) => addProductCart(product),
       getProducts: getProductsCart,
-      removeProduct: () => null,
-      clearCart: () => null,
+      removeProduct: (product) => removeProductCart(product),
+      clearCart: () => clearCart(),
     }),
     [auth, totalProducts]
   );
@@ -104,7 +115,7 @@ function App() {
     <AuthContext.Provider value={data}>
       <CartContext.Provider value={cartData}>
         <div className="App">
-          <ToastContainer />
+          <ToastContainer position="top-center" />
           <Header />
           <BrandsBar />
           <div className="container">
@@ -114,6 +125,7 @@ function App() {
               <Route path="/:brand" element={<Products brand={true} />} />
               <Route path="/products/:id" element={<ProductPage />} />
               <Route path="/myprofile" element={<MyProfile />} />
+              <Route path="/cart" element={<CartPage />} />
               <Route path="/" element={<HomeBody />} />
             </Routes>
           </div>

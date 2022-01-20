@@ -1,0 +1,41 @@
+.address-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.address-form .form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 400px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 15px;
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 5px;
+}
+

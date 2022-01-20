@@ -23,7 +23,7 @@ export default function MyProfile() {
   return (
     <div className="MyProfile">
       {!loading && user ? (
-        <div className="user-info">
+        <div className="user-data">
           <h2 className="user-name">{user.name}</h2>
           <p className="user-email">{user.email}</p>
         </div>
