@@ -25,6 +25,7 @@ import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import MyProfile from "./components/MyProfile/MyProfile";
 import CartPage from "./components/CartPage/CartPage";
+import { getUserData } from "./api/user";
 
 function App() {
   const [auth, setAuth] = useState(undefined);
@@ -35,9 +36,12 @@ function App() {
   useEffect(() => {
     const token = getToken();
     if (token) {
-      setAuth({
-        token,
-        user: jwtDecode(token),
+      getUserData().then((res) => {
+        setAuth({
+          token,
+          user: res.data.user,
+        });
+        localStorage.setItem("user", JSON.stringify(res.data.user));
       });
     } else {
       setAuth(null);
@@ -92,9 +96,8 @@ function App() {
     if (token) {
       removeProductFromCart(product);
       setReloadCart(true);
-    } 
+    }
   };
-
 
   const cartData = useMemo(
     () => ({
@@ -110,7 +113,6 @@ function App() {
   if (auth === undefined) {
     return null;
   }
-
   return (
     <AuthContext.Provider value={data}>
       <CartContext.Provider value={cartData}>

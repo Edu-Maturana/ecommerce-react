@@ -47,7 +47,7 @@ export default function Login() {
             </div>
             <button type="submit" loading={loading} className="Submit" disabled={isSubmitting}>
               {
-                loading ? "..." : "Submit"
+                loading ? "..." : "Log In"
               }
             </button>
             <Link to="/signup">

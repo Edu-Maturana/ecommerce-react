@@ -8,12 +8,11 @@ import useAuth from "../../hooks/useAuth";
 
 export default function AddressShipping() {
   const [address, setAddress] = useState(null);
-  const {auth, setReloadUser} = useAuth();
+  const { auth, setReloadUser } = useAuth();
 
   useEffect(() => {
     getUserData().then((res) => {
       const { address } = res.data.user;
-      console.log(address);
       setAddress(address);
     });
   }, [auth]);
@@ -22,11 +21,11 @@ export default function AddressShipping() {
     <div>
       <h2>Shipping address</h2>
       {address ? (
-        <div>
-          <p>{address.street}</p>
-          <p>{address.city}</p>
-          <p>{address.state}</p>
-          <p>{address.zip}</p>
+        <div className="address-info">
+          <p>Street: {address.street}</p>
+          <p>City: {address.city}</p>
+          <p>State: {address.state}</p>
+          <p>Zip: {address.zip}</p>
         </div>
       ) : (
         <Formik
@@ -40,6 +39,7 @@ export default function AddressShipping() {
             editAddress(values).then((res) => {
               console.log(res);
               setReloadUser(true);
+              localStorage.setItem("address", JSON.stringify(values));
             });
             toast.success("Address saved");
           }}

@@ -33,3 +33,16 @@ export const editAddress = (userAddress) => {
     );
   }
 };
+
+export const getOrders = () => {
+  const token = getToken();
+  if (token) {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+    };
+    return axios.get(`${environment.apiUrl}users/orders`, config);
+  }
+};

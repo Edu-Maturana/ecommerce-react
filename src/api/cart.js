@@ -1,4 +1,7 @@
 import { toast } from "react-toastify";
+import axios from "axios";
+import environment from "../config";
+
 export function getProductsCart() {
   const cart = localStorage.getItem("cart");
 
@@ -48,5 +51,30 @@ export function removeProductFromCart(product) {
 
   if (newCart.length === 0) {
     localStorage.removeItem("cart");
+  }
+}
+
+export function payCart(token, products, userId, address, totalPrice) {
+  try {
+    const url = `${environment.apiUrl}orders/payment`;
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+    };
+    
+    const data = {
+      token,
+      products,
+      userId,
+      addressShipping: address,
+      total: totalPrice,
+    };
+    const response = axios.post(url, data, config);
+    return response;
+  } catch (error) {
+    console.log(error);
   }
 }
