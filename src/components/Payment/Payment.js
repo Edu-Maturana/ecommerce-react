@@ -69,7 +69,7 @@ function PaymentForm(props) {
         setLoading(false);
         clearCart();
         setTimeout(() => {
-          props.history.push("/myprofile");
+          window.location.href = "/profile";
         }, 1500);
       }
     }
