@@ -126,7 +126,7 @@ function App() {
               <Route path="signup" element={<Signup />} />
               <Route path="/:brand" element={<Products brand={true} />} />
               <Route path="/products/:id" element={<ProductPage />} />
-              <Route path="/myprofile" element={<MyProfile />} />
+              <Route path="/profile" element={<MyProfile />} />
               <Route path="/cart" element={<CartPage />} />
               <Route path="/" element={<HomeBody />} />
             </Routes>
