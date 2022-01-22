@@ -7,7 +7,7 @@
     font-weight: bold;
     padding: 10px;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .card-element {
@@ -19,4 +19,14 @@
 
 .payment-form {
     margin-bottom: 30px;
+}
+
+.payment-info-card {
+    font-size: 10px;
+}
+
+.stripe {
+    color: #635BFF;
+    font-weight: bold;
+    margin-bottom: 5px;
 }

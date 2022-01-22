@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import {
   Elements,
   CardElement,
@@ -70,17 +70,33 @@ function PaymentForm(props) {
         clearCart();
         setTimeout(() => {
           window.location.href = "/myprofile";
-        }
-        , 1500);
+        }, 1500);
       }
     }
   };
   return address ? (
     <form className="payment-form" onSubmit={handleSubmit}>
+      <div className="payment-info">
+        <p className="payment-info-card">
+          You can use this test card provided by
+          <span class="stripe"> Stripe:</span>
+          <br />
+          Number: 4242 4242 4242 4242
+          <br />
+          Exp: Any future date
+          <br />
+          CVC: Any 3 digits
+          <br />
+          ZIP: Any 5 digits
+        </p>
+      </div>
       <CardElement className="card-element" />
       <button type="submit" className="submit-pay" disabled={!stripe}>
-        {
-          loading ? <img className="loading" src={environment.loading} alt="loading" /> : "Pay"} 
+        {loading ? (
+          <img className="loading" src={environment.loading} alt="loading" />
+        ) : (
+          "Pay"
+        )}
       </button>
     </form>
   ) : (
