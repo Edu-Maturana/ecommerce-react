@@ -34,7 +34,7 @@ export default function MyProfile() {
           <MyOrders />
         </div>
       ) : (
-        <h2>...</h2>
+        <h2>Loading...</h2>
       )}
     </div>
   );

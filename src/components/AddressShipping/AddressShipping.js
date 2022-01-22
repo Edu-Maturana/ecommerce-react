@@ -5,18 +5,18 @@ import "./AddressShipping.css";
 import { getUserData, editAddress } from "../../api/user";
 import { toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
+import * as Yup from "yup";
 
 export default function AddressShipping() {
   const [address, setAddress] = useState(null);
   const { auth, setReloadUser } = useAuth();
-
+  
   useEffect(() => {
     getUserData().then((res) => {
       const { address } = res.data.user;
       setAddress(address);
     });
   }, [auth]);
-
   return (
     <div>
       <h2>Shipping address</h2>
@@ -39,15 +39,35 @@ export default function AddressShipping() {
             editAddress(values).then((res) => {
               console.log(res);
               setReloadUser(true);
-              localStorage.setItem("address", JSON.stringify(values));
             });
             toast.success("Address saved");
           }}
+          validationSchema={Yup.object({
+            street: Yup.string()
+              .max(50, "Must be 50 characters or less")
+              .required("Required"),
+            city: Yup.string()
+
+              .max(50, "Must be 50 characters or less")
+              .required("Required"),
+            state: Yup.string()
+              .max(50, "Must be 50 characters or less")
+              .required("Required"),
+            zip: Yup.string()
+              .max(50, "Must be 50 characters or less")
+              .required("Required"),
+          })}
+
         >
           <Form className="address-form">
             <div className="form-group">
               <label className="Label">Street</label>
-              <Field type="text" name="street" className="form-control" />
+              <Field
+                type="text"
+                name="street"
+                className="form-control"
+                error="error"
+              />
             </div>
             <div className="form-group">
               <label className="Label">City</label>
@@ -61,7 +81,7 @@ export default function AddressShipping() {
               <label className="Label">Zip</label>
               <Field type="text" name="zip" className="form-control" />
             </div>
-            <button type="submit" className="Submit">
+            <button type="submit" className="submit-address">
               Save address
             </button>
           </Form>

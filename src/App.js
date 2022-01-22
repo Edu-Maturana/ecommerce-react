@@ -87,7 +87,7 @@ function App() {
       addProductToCart(product);
       setReloadCart(true);
     } else {
-      toast.warning("You must be logged in to buy products");
+      toast.warning("You must be registered to add products to cart");
     }
   };
 
