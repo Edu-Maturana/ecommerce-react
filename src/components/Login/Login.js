@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 import useAuth from "../../hooks/useAuth";
 import { LogIn } from "../../api/auth";
@@ -13,7 +13,6 @@ export default function Login() {
   const {login} = useAuth();
   return (
     <div className="Login">
-      <ToastContainer />
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={(values, { setSubmitting }) => {
