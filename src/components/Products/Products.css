@@ -62,3 +62,9 @@
     text-decoration: none;
     color: gray;
 }
+
+@media (max-width: 480px) {
+    .products {
+        width: 100%;
+    }
+}

@@ -16,3 +16,10 @@
     border-radius: 50%;
     cursor: pointer;
 }
+
+@media (max-width: 480px) {
+    .cart img {
+        width: 30px;
+        height: 30px;
+    }
+}
