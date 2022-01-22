@@ -9,3 +9,9 @@
 .user-email {
     margin-top: -10px;
 }
+
+@media (max-width: 480px) {
+  .MyProfile {
+    width: 300px;
+  }
+}

@@ -47,12 +47,12 @@ export default function ProductPage() {
               <button className="buy" onClick={() => addProduct(product.id)}>Add to cart</button>
             </div>
           </div>
-          <div>
+          <div className="video-wrapper">
             <h3>Product video</h3>
             <ReactPlayer
               className="product-video"
-              width={889}
-              height={500}
+              width="100%"
+              height="100%"
               url={product.video}
               controls
             />
