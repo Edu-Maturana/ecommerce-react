@@ -81,7 +81,7 @@ function PaymentForm(props) {
           You can use this test card provided by
           <span class="stripe"> Stripe:</span>
           <br />
-          Number: 4242 4242 4242 4242
+          Number: 4242 4242 4242 4242 
           <br />
           Exp: Any future date
           <br />
