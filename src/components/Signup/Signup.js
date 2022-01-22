@@ -64,13 +64,13 @@ export default function Signup() {
               <button
                 type="submit"
                 loading={loading}
-                className="Submit"
+                className="submit-form"
                 disabled={isSubmitting}
               >
                 {loading ? "..." : "Submit"}
               </button>
-              <Link to="/login">
-                <p className="link">Already have an account? Login</p>
+              <Link to="/login" className="link">
+                Already have an account? Login
               </Link>
             </div>
           </Form>

@@ -44,13 +44,13 @@ export default function Login() {
               <label className="Label">Password</label>
               <Field type="password" name="password" className="Input" />
             </div>
-            <button type="submit" loading={loading} className="Submit" disabled={isSubmitting}>
+            <button type="submit" loading={loading} className="submit-form" disabled={isSubmitting}>
               {
                 loading ? "..." : "Log In"
               }
             </button>
-            <Link to="/signup">
-              <p className="link">Don't have an account? Sign up</p>
+            <Link className="link" to="/signup">
+              Don't have an account? Sign up
             </Link>
           </Form>
         )}
