@@ -33,7 +33,7 @@ export default function Payment(props) {
 
 function PaymentForm(props) {
   const { totalPrice } = props;
-  const { getProducts } = useCart();
+  const { getProducts, clearCart } = useCart();
   const stripe = useStripe();
   const elements = useElements();
   const { auth } = useAuth();
@@ -67,11 +67,16 @@ function PaymentForm(props) {
       } else {
         toast.success("Payment successful");
         setLoading(false);
+        clearCart();
+        setTimeout(() => {
+          window.location.href = "/myprofile";
+        }
+        , 1500);
       }
     }
   };
   return address ? (
-    <form onSubmit={handleSubmit}>
+    <form className="payment-form" onSubmit={handleSubmit}>
       <CardElement className="card-element" />
       <button type="submit" className="submit-pay" disabled={!stripe}>
         {
