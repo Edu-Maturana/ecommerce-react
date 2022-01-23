@@ -27,7 +27,7 @@ export default function Header() {
         <CartIcon />
         {auth ? (
           <div className="user">
-            <Link to="/myprofile" className="Button profile">
+            <Link to="/profile" className="Button profile">
               <img
                 className="user-icon"
                 src="https://cupeybowling.com/wp-content/uploads/2021/05/940-9406687_already-a-proact-user-employee-icon-white-png.png"
